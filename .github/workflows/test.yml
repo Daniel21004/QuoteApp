@@ -5,7 +5,7 @@ on:
     branches: ["main"]
 
 jobs:
-  test:
+  test: # El nombre no importa
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4 # Se implementa la libreria para el build
