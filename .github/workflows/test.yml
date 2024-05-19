@@ -1,8 +1,6 @@
 name: Android Test CI
 
-on:
-  push:
-    branches: ["main"]
+on: [push]
 
 jobs:
   test: # El nombre no importa
@@ -17,7 +15,7 @@ jobs:
           cache: gradle
 
       - name: Unit Test
-        run: .\gradlew testDebugUnitTest # Para la ejecución y verificación de los test
+        run: ./gradlew testDebugUnitTest # Para la ejecución y verificación de los test
 
       - name: Android Test Report
         uses: asadmansr/android-test-report-action@v1.2.0 # Action para el reporte de los test
