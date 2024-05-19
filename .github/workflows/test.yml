@@ -1,0 +1,24 @@
+name: Android Test CI
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4 # Se implementa la libreria para el build
+      - name: set up JDK 17 # Mensaje de que se va a instalar el JDK 11
+        uses: actions/setup-java@v4 # Implementación de la libreria para la instalación del JDK 11
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Unit Test
+        run: .\gradlew testDebugUnitTest # Para la ejecución y verificación de los test
+
+      - name: Android Test Report
+        uses: asadmansr/android-test-report-action@v1.2.0 # Action para el reporte de los test
+        if: ${{ always() }} # Ejecución de la libreria AUNQUE los test fallen
