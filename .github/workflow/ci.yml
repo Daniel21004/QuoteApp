@@ -1,0 +1,31 @@
+# Nombre del proceso o workflow
+name: Android CI
+
+# Se activa cada vez que se producta las acciones descritas dentro
+on:
+  push:
+    branches: [ "main" ] # Cada vez que se haga un push a una de estas ramas, se lanza el pipeline
+
+  pull_request:
+    branches: [ "main" ] # Cada vez que se haga un pull request a una de estas ramas, se lanza el pipeline
+
+# Cuando se produzca un push o un PR; entonces que relice los siguiente
+jobs:
+  build: # Una de las tareas a realizar es hacer un build de la aplicación
+    run-on: ubuntu-latest # Se hace el build en una máquina virtual ubuntu
+
+  steps:
+    - uses: actions/checkout@v3 # Se implementa la libreria para el build
+    - name: set up JDK 11 # Mensaje de que se va a instalar el JDK 11
+      uses: actions/setup-java@v3 # Implementación de la libreria para la instalación del JDK 11
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: gradle
+    - name: set up gradle
+      uses: gradle/gradle-build-action@v2
+    - name: Build app
+      run: ./gradlew assemble # Ejecuta un script del Android Strudio. Construye la aplicación (como al pulsar el martillo)
+
+
+
