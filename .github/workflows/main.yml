@@ -12,7 +12,7 @@ on:
 # Cuando se produzca un push o un PR; entonces que relice los siguiente
 jobs:
   build: # Una de las tareas a realizar es hacer un build de la aplicación
-    run-on: ubuntu-latest # Se hace el build en una máquina virtual ubuntu
+    runs-on: ubuntu-latest # Se hace el build en una máquina virtual ubuntu
 
     steps:
       - uses: actions/checkout@v3 # Se implementa la libreria para el build
