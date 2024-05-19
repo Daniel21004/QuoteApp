@@ -16,10 +16,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4 # Se implementa la libreria para el build
-      - name: set up JDK 11 # Mensaje de que se va a instalar el JDK 11
+      - name: set up JDK 17 # Mensaje de que se va a instalar el JDK 11
         uses: actions/setup-java@v4 # Implementación de la libreria para la instalación del JDK 11
         with:
-          java-version: '11'
+          java-version: '17'
           distribution: 'temurin'
           cache: gradle
       - name: set up gradle
